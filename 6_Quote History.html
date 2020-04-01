@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<!--模版头-->
+
+<head>
+    <title>ZHL ENERGY | QUOTE HISTORY</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        h5 {
+            font-size: 2rem;
+        }
+
+        body{
+            background-color: lightyellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-0 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-bold ">
+            <img width="60" src="pic/Icon.png" class="">
+            ZHL ENERGY | QUOTE HISTORY
+        </h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <button class="btn btn-primary" onclick="window.location.href = '3_Home Page.html';">Home</button>
+            <button class="btn btn-primary" onclick="window.location.href = '4_Profile Management.html';">Profile
+                Management</button>
+            <button class="btn btn-primary" onclick="window.location.href = '5_Get Fuel Rate.html';">Get Fuel
+                Rate</button>
+        </nav>
+        <button class="btn btn-outline-primary" onclick="window.location.href = '1_Login Page.html';">Log Out</button>
+    </div>
+
+
+    <!--模版尾-->
+    <!--以下开始自由发挥：-->
+
+    
+    <div class="dropdown d-flex flex-row justify-content-around">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter
+      </button>
+      <div class="dropdown-menu py-10" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+      </div>
+
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+      </div>
+      <form>
+        <input type="text" name="search" placeholder="search" >
+        <button for="search">Search</button>
+      </form>
+    </div>
+    
+</body>
+
+</html>
