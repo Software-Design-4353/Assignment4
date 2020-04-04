@@ -1,6 +1,11 @@
 <?php
     session_start();
+  //calculation and store history not yet add, read history please see 6_QuoteHistory
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
