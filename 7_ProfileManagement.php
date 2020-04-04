@@ -111,22 +111,22 @@
         //prefill the text box
         echo "<div style=\"text-align:center;font-family:arial\">";
         //fName
-        echo "<label for=\"fName\">First Name</label>";
+        echo "<label for=\"fName\">First Name<br></label><br>";
         echo "<input type=\"text\"  name=\"fName\" value='$fName' required><br>";
         //lName
-        echo "<label for=\"lName\">Lase Name</label>";
+        echo "<label for=\"lName\">Lase Name<br></label><br>";
         echo "<input type=\"text\"  name=\"lName\" value='$lName' required><br>";
         //Addr1
-        echo "<label for=\"addr1\">Address1</label>";
+        echo "<label for=\"addr1\">Address1<br></label><br>";
         echo "<input type=\"text\"  name=\"addr1\" value='$addr1' required><br>";
         //Addr2
-        echo "<label for=\"addr2\">Address2</label>";
+        echo "<label for=\"addr2\">Address2<br></label><br>";
         echo "<input type=\"text\"  name=\"addr2\" value='$addr2'><br>";
         //city
-        echo "<label for=\"city\">City</label>";
+        echo "<label for=\"city\">City<br></label><br>";
         echo "<input type=\"text\"  name=\"city\" value='$city' required><br>";
         //state
-        echo "<label for=\"state\">State</label>";
+        echo "<label for=\"state\">State<br></label><br>";
         echo "<select name=\"state\" class=\"selection\"";
         echo "<option value=\"\"></option>";
         echo "<option value='$state'selected>".$state."</option>";
@@ -183,16 +183,16 @@
         echo "<option value=\"WY\">WY (Wyoming)</option> ";
         echo "</select><br>";
         //zip
-        echo "<label for=\"zip\">Zip Code</label>";
+        echo "<label for=\"zip\">Zip Code<br></label><br>";
         echo "<input type=\"text\" placeholder=\"Enter Zip Code\" name=\"zip\" value='$zip' required><br>";
         //Email
-        echo "<label for=\"email\">Email</label>";
+        echo "<label for=\"email\">Email<br></label><br>";
         echo "<input type=\"email\"  name=\"email\" value='$email' required><br>";
         //Password
-        echo "<label for=\"psw\">Password</label>";
+        echo "<label for=\"psw\">Password<br></label><br>";
         echo "<input type=\"text\"  name=\"psw\" value='$psw' required><br>";
 
-        echo "<input type=\"submit\" value=\"Save\">"; 
+        echo "<br><input type=\"submit\" value=\"Save\"><br><br>"; 
         echo "</div>";
         echo "</form>";
 
