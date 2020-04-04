@@ -25,6 +25,7 @@
         body {
             background-image: url("pic/Background.jpg");
             background-color: lightyellow;
+            background-size: cover;
         }
     </style>
 </head>
