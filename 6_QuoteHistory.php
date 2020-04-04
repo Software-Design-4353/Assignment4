@@ -4,15 +4,11 @@
 <!DOCTYPE html>
 <html>
 
-<!--模版头-->
-
 <head>
     <title>ZHL ENERGY | QUOTE HISTORY</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -45,34 +41,46 @@
     </div>
 
 
-    <!--模版尾-->
-    <!--以下开始自由发挥：-->
-
-    <div>
-      <br>
-      <br>
-      <h2 style="text-align:center"> Check Quote History</h2>
-      <br>
-      <table border="1" align="center">
+    <br>
+    <br>
+    <table align = "center" border = "1px" style = "width:600px; line-height: 30px">
+        <t>
+            <th> User Email</th>
+            <th> Gallon Request</th>
+            <th> Delivery Date </th>
+            <th> Address </th>
+            <th> Price  </th>
+            <th> Total Amount</th>
+        </t>
+        <?php
+            //connection
+            include '0_Connection.php';
+            $sql = "SELECT * FROM quotehistory";
+            $result = $mysqli->query($sql);
+            
+            while($row = mysqli_fetch_assoc($result))
+            {
+        ?>
             <tr>
-            <th>NO.</th>
-            <th>Gallon Requested:</th>
-            <th>Delivery Date:</th>
-            <th>Delivery Address:</th>
-            <th>Price:</th>
-            <th>Total Amount:</th>
+                <td><?php echo $row['Email']; ?></td>
+                <td><?php echo $row['gallons']; ?></td>
+                <td><?php echo $row['deliverydate']; ?></td>
+                <td><?php echo $row['Address']; ?></td>
+                <td><?php echo $row['suggestedprice']; ?></td>
+                <td><?php echo $row['price']; ?></td>
             </tr>
-            <tr>
-            <td>1</td>
-            <td>30</td>
-            <td>April 2, 2020</td>
-            <td>4800 Calhoun Rd, Houston, TX 77004</td>
-            <td>$25</td>
-            <td>30</td>
-            </tr>
-            </table>
+        <?php
 
-    </div>
+            }
+        ?>
+        
+    </table>
+
+    <?php 
+
+    $mysqli->close();
+	?>
+
 </body>
 
 </html>
