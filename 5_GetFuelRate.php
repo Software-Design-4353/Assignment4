@@ -4,9 +4,6 @@
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -64,10 +61,8 @@
         </h5>
         <nav class="my-2 my-md-0 mr-md-3">
             <button class="btn btn-primary" onclick="window.location.href = '3_HomePage.php';">Home</button>
-            <button class="btn btn-primary" onclick="window.location.href = '7_ProfileManagement.php';">Profile
-                Management</button>
-            <button class="btn btn-primary" onclick="window.location.href = '6_QuoteHistory.php';">Quote
-                History</button>
+            <button class="btn btn-primary" onclick="window.location.href = '7_ProfileManagement.php';">Profile Management</button>
+            <button class="btn btn-primary" onclick="window.location.href = '6_QuoteHistory.php';">Quote History</button>
         </nav>
         <button class="btn btn-outline-primary" onclick="window.location.href = '1_LoginPage.php';">Log Out</button>
     </div>
@@ -78,25 +73,13 @@
     <div>
       <br>
       <br>
-      <h2 style="text-align:center"> Get Your Feul Rate</h2>
+      <h2 style="text-align:center"> Get Your Feul Rate</h2><br>
   
-      <form action="5_GetFuelRate.php" method="get">
-        <div style="text-align:center;font-family:arial">
-  
-          <label for="gallons">Gallon Requested: <br></label><br>
-          <input type="numeric" name="gallons" placeholder="Enter a number" required>
-          <br>
-
-          <label for="deliveryDate">Delivery Date: <br></label><br>
-          <input type="date" name="deliveryDate" placeholder="date" required>
-          <br>
-
-
           <?php
         //connection
         include '0_Connection.php';
-
         $email=$_SESSION["email"];
+
         //get this users info from database
         $query = "SELECT * FROM Users.UserInfo WHERE Email='$email'";
 
@@ -105,51 +88,126 @@
         else
           echo "Could not access to Your profile!";
 
-        //asign all the profile to each variabl
+        //assign values
+
         $result_ar = mysqli_fetch_assoc($result);
-  
         $addr1=$result_ar['address1'];
         $addr2=$result_ar['address2'];
         $city=$result_ar['city'];
         $state=$result_ar['state'];
         $zip=$result_ar['zip'];
+        $email=$result_ar['Email'];
+        $clientType=$result_ar['clientType'];
+
+        $gallons=null;
+        $deliveryDate=0000-00-00;
+
+        $suggestedPrice=null;
+        $totalAmount=null;
 
         echo "<form action=\"9_PricingModule.php\" method=\"get\">";
 
-        //prefill the text box
         echo "<div style=\"text-align:center;font-family:arial\">";
-        //fName
 
         //Addr1
         echo "<label for=\"addr1\">Address 1<br></label><br>";
-        echo "<input type=\"text\"  name=\"addr1\" value='$addr1'><br>";
+        echo "<input type=\"text\"  name=\"addr1\" value='$addr1' readonly><br>";
         //Addr2
         echo "<label for=\"addr2\">Address 2<br></label><br>";
-        echo "<input type=\"text\"  name=\"addr2\" value='$addr2'><br>";
+        echo "<input type=\"text\"  name=\"addr2\" value='$addr2' readonly><br>";
         //city
         echo "<label for=\"city\">City<br></label><br>";
-        echo "<input type=\"text\"  name=\"city\" value='$city'><br>";
+        echo "<input type=\"text\"  name=\"city\" value='$city' readonly><br>";
         //state
         echo "<label for=\"state\">State<br></label><br>";
-        echo "<input type=\"text\"  name=\"state\" value='$state'><br>";
-
+        echo "<input type=\"text\"  name=\"state\" value='$state' readonly><br>";
         //zip
         echo "<label for=\"zip\">Zip Code<br></label><br>";
-        echo "<input type=\"text\" placeholder=\"Enter Zip Code\" name=\"zip\" value='$zip' required><br>";
-    ?> 
-  
-          <input type="submit" value="Calculate"> <br>
-          <br>
+        echo "<input type=\"text\" name=\"zip\" value='$zip' readonly><br><br>";
+
+        //client type
+        echo "<input type=\"hidden\" name=\"clientType\" value='$clientType' readonly>";
+        //email
+        echo "<input type=\"hidden\" name=\"email\" value='$email' readonly>";
+
+        //////////////////////
+
+        //get this readyQuote from database
+        $query = "SELECT * FROM Users.readyquote WHERE Email='$email'";
+
+        if($result=$mysqli->query($query))  //check if this query succeed
+        {} //do nothing
+        else
+          echo "Could not access to Your file!";
+
+        //assign values
+
+        $result_ar = mysqli_fetch_assoc($result);
+        $Mark=$result_ar['Mark'];
         
-        <label for="price" style="color:red">Suggested Price:<br></label><br>
-        <input type="numeric" placeholder="temp" name="price">
-        <br>
-        <br>
-      
-        <label for="totalAmount" style="color:red">Total Amount Due:<br></label><br>
-        <input type="numeric" placeholder="temp" name="totalAmount">
-        <br>
-        <br>
+        if($Mark==1){
+        $email=$result_ar['Email'];
+        $fullAddress=$result_ar['fullAddress'];
+        $gallons=$result_ar['gallons'];
+        $deliveryDate=$result_ar['deliverydate'];
+        $suggestedPrice=$result_ar['suggestedprice'];
+        $totalAmount=$result_ar['totalAmount'];
+        }        
+
+
+        //input gallons
+        echo  "<label for=\"gallons\" style=\"color:red\">Gallon Requested: <br></label><br>";
+        if($Mark==1){
+          echo  "<input type=\"numeric\" name=\"gallons\" placeholder=\"Enter Number\" value='$gallons' readonly><br><br>";  
+        }else{
+          echo  "<input type=\"numeric\" name=\"gallons\" placeholder=\"Enter Number\" value='$gallons' required><br><br>";  
+        }
+     
+        //input delivery date
+        echo  "<label for=\"deliveryDate\" style=\"color:red\">Delivery Date: <br></label><br>";
+        if($Mark==1){
+          echo  "<input type=\"date\" name=\"deliveryDate\" placeholder=\"date\" value='$deliveryDate' readonly><br><br>";
+        }else{
+          echo  "<input type=\"date\" name=\"deliveryDate\" placeholder=\"date\" value='$deliveryDate' required><br><br>";
+        }
+
+
+        //////////////////////
+        
+        //submit button
+        if($Mark==1){
+          echo "<input type=\"submit\" style = \"background-color: gray\" value=\"Get Price\" DISABLED/><br><br>"; //ban the get price
+        }else{
+          echo "<input type=\"submit\" value=\"Get Price\"><br><br>";
+        }
+        
+        //show suggest price
+        echo "<label for=\"price\" style=\"color:red\">Suggested Price: $<br></label><br>";
+        echo "<input type=\"numeric\" name=\"suggestedPrice\" id=\"suggestedPrice\" placeholder=\"00.00\" value='$suggestedPrice' readonly><br><br>";
+
+        //show total amount
+        echo "<label for=\"totalAmount\" style=\"color:red\">Total Amount Due: $<br></label><br>";
+        echo "<input type=\"numeric\" name=\"totalAmount\" id=\"totalAmount\" placeholder=\"00.00\" value='$totalAmount' readonly><br><br>";
+
+        echo "</div>";
+        echo "</form>";
+
+        //submit button
+        echo "<form action=\"6_QuoteHistory.php\" method=\"post\">";
+        echo "<div style=\"text-align:center;font-family:arial\">";
+
+        if($Mark==0){
+          echo "<input type=\"submit\" style = \"background-color: gray\" value=\"Submit Quote\" DISABLED/><br><br>";
+        }else{
+          echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
+
+          $query="INSERT INTO Users.tempquote SET Email = '$email', Address = '$fullAddress', gallons = '$gallons', deliverydate = '$deliveryDate', suggestedprice = '$suggestedPrice', price = '$totalAmount'";
+          $query="UPDATE Users.readyquote SET Mark = 0 WHERE Mark=1";//reset readyQuote table
+          $query="UPDATE Users.UserInfo SET clientType = 1 WHERE Email='$email'"; //change client type to old client (value = 1)
+        }
+
+    ?>
+
       </div>
       </form>
   
