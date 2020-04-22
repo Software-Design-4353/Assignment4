@@ -59,7 +59,7 @@
       $totalAmount=$suggestedPrice*$gallons;
 
       //update Table
-      $query="UPDATE Users.readyquote SET Email = '$email', fullAddress = '$fullAddress', gallons = '$gallons', deliverydate = '$deliveryDate', suggestedprice = '$suggestedPrice', totalAmount = '$totalAmount', Mark = 1 WHERE Mark=0";
+      $query="UPDATE Users.readyquote SET Email = '$email', fullAddress = '$fullAddress', gallons = '$gallons', deliveryDate = '$deliveryDate', suggestedPrice = '$suggestedPrice', totalAmount = '$totalAmount', Mark = 1 WHERE Mark=0";
 
 			if($mysqli->query($query)===TRUE)
 			{
