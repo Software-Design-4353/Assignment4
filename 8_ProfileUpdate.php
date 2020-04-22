@@ -16,7 +16,9 @@
 		    $old_email=$_SESSION["email"];
 		    
 			//update UserInfo Table
-			$query="UPDATE Users.UserInfo SET fName = '$fName',lName = '$lName',address1='$addr1',address2='$addr2',city='$city',state='$state',zip='$zip',Email = '$email', Password = '$psw' WHERE Email='$old_email'";
+			$query="UPDATE Users.UserInfo 
+			SET fName = '$fName',lName = '$lName',address1='$addr1',address2='$addr2',city='$city',state='$state',zip='$zip',Email = '$email', Password = '$psw' WHERE Email='$old_email'";
+			
 			if($mysqli->query($query)===TRUE)
 			{
 				header("location:7_ProfileManagement.php");
