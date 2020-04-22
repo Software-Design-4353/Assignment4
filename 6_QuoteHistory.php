@@ -49,7 +49,7 @@
             <th> Gallon Request</th>
             <th> Delivery Date </th>
             <th> Address </th>
-            <th> Price  </th>
+            <th> Suggested Price  </th>
             <th> Total Amount</th>
         </t>
         <?php
@@ -64,10 +64,10 @@
             <tr>
                 <td><?php echo $row['Email']; ?></td>
                 <td><?php echo $row['gallons']; ?></td>
-                <td><?php echo $row['deliverydate']; ?></td>
-                <td><?php echo $row['Address']; ?></td>
-                <td><?php echo $row['suggestedprice']; ?></td>
-                <td><?php echo $row['price']; ?></td>
+                <td><?php echo $row['deliveryDate']; ?></td>
+                <td><?php echo $row['fullAddress']; ?></td>
+                <td><?php echo $row['suggestedPrice']; ?></td>
+                <td><?php echo $row['totalAmount']; ?></td>
             </tr>
         <?php
 
