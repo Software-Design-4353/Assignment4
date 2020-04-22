@@ -149,8 +149,8 @@
         $email=$result_ar['Email'];
         $fullAddress=$result_ar['fullAddress'];
         $gallons=$result_ar['gallons'];
-        $deliveryDate=$result_ar['deliverydate'];
-        $suggestedPrice=$result_ar['suggestedprice'];
+        $deliveryDate=$result_ar['deliveryDate'];
+        $suggestedPrice=$result_ar['suggestedPrice'];
         $totalAmount=$result_ar['totalAmount'];
         }        
 
@@ -192,16 +192,13 @@
         echo "</div>";
         echo "</form>";
 
+
+
+        ///////////////////////////////////////
+
         //submit button
-        echo "<form action=\"6_QuoteHistory.php\" method=\"post\">";
+        echo "<form action=\"6_QuoteHistory.php\">";
         echo "<div style=\"text-align:center;font-family:arial\">";
-
-        $query = "SELECT * FROM Users.readyquote WHERE Email='$email'";
-
-        if($result=$mysqli->query($query))  //check if this query succeed
-        {} //do nothing
-        else
-          echo "Could not access to Your file!";
 
         //assign values
 
@@ -210,13 +207,12 @@
         }else{
           echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
 
-          $query="INSERT INTO Users.quotehistory(Email,Address,gallons,deliverydate,suggestedprice,price) VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          $query="INSERT INTO Users.quotehistory(Email,Address,gallons,deliveryDate,suggestedPrice,totalAmount) VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
           if($mysqli->query($query)===TRUE)
           {}
           else{
             echo "Error";
           }
-
           
           $query="UPDATE Users.readyquote SET Mark = 0 WHERE Mark=1";//reset readyQuote table
           if($mysqli->query($query)===TRUE)
