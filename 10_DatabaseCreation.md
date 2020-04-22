@@ -19,7 +19,7 @@ CREATE TABLE UserInfo (
 
 CREATE TABLE QuoteHistory(
 	Email VARCHAR(50) PRIMARY KEY,
-    Address VARCHAR(100),
+    fullAddress VARCHAR(100),
 	gallons INT,
 	deliveryDate DATE,
 	suggestedPrice DECIMAL(10,2),
