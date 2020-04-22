@@ -114,7 +114,7 @@
         $state=$result_ar['state'];
         $zip=$result_ar['zip'];
 
-        echo "<form action=\"8_ProfileUpdate.php\" method=\"get\">";
+        echo "<form action=\"9_PricingModule.php\" method=\"get\">";
 
         //prefill the text box
         echo "<div style=\"text-align:center;font-family:arial\">";
