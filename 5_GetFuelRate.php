@@ -104,6 +104,14 @@
 
         $suggestedPrice=null;
         $totalAmount=null;
+        $fullAddress=null;
+
+        $temp1=null;
+        $temp2=null;
+        $temp3=$gallons;
+        $temp4=$deliveryDate;
+        $temp5=$suggestedPrice;
+        $temp6=$totalAmount;
 
         echo "<form action=\"9_PricingModule.php\" method=\"get\">";
 
@@ -192,7 +200,12 @@
         echo "</div>";
         echo "</form>";
 
-
+        $temp1=$email;
+        $temp2=$fullAddress;
+        $temp3=$gallons;
+        $temp4=$deliveryDate;
+        $temp5=$suggestedPrice;
+        $temp6=$totalAmount;
 
         ///////////////////////////////////////
 
@@ -207,7 +220,15 @@
         }else{
           echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
 
-          $query="INSERT INTO Users.quotehistory(Email,Address,gallons,deliveryDate,suggestedPrice,totalAmount) VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          $email=$temp1;
+          $fullAddress=$temp2;
+          $gallons=$temp3;
+          $deliveryDate=$temp4;
+          $suggestedPrice=$temp5;
+          $totalAmount=$temp6;
+          
+          $query="INSERT INTO Users.quotehistory(Email,fullAddress,gallons,deliveryDate,suggestedPrice,totalAmount) 
+          VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
           if($mysqli->query($query)===TRUE)
           {}
           else{
