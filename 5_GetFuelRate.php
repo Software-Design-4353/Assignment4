@@ -196,14 +196,42 @@
         echo "<form action=\"6_QuoteHistory.php\" method=\"post\">";
         echo "<div style=\"text-align:center;font-family:arial\">";
 
+        $query = "SELECT * FROM Users.readyquote WHERE Email='$email'";
+
+        if($result=$mysqli->query($query))  //check if this query succeed
+        {} //do nothing
+        else
+          echo "Could not access to Your file!";
+
+        //assign values
+
         if($Mark==0){
           echo "<input type=\"submit\" style = \"background-color: gray\" value=\"Submit Quote\" DISABLED/><br><br>";
         }else{
           echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
 
-          $query="INSERT INTO Users.tempquote SET Email = '$email', Address = '$fullAddress', gallons = '$gallons', deliverydate = '$deliveryDate', suggestedprice = '$suggestedPrice', price = '$totalAmount'";
+          $query="INSERT INTO Users.quotehistory(Email,Address,gallons,deliverydate,suggestedprice,price) VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          if($mysqli->query($query)===TRUE)
+          {}
+          else{
+            echo "Error";
+          }
+
+          
           $query="UPDATE Users.readyquote SET Mark = 0 WHERE Mark=1";//reset readyQuote table
+          if($mysqli->query($query)===TRUE)
+          {}
+          else{
+            echo "Error";
+          }
+
           $query="UPDATE Users.UserInfo SET clientType = 1 WHERE Email='$email'"; //change client type to old client (value = 1)
+          if($mysqli->query($query)===TRUE)
+          {}
+          else{
+            echo "Error";
+          }
+
         }
 
     ?>
