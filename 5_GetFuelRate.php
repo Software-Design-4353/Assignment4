@@ -226,9 +226,10 @@
           $deliveryDate=$temp4;
           $suggestedPrice=$temp5;
           $totalAmount=$temp6;
+          $time=date('Y-m-d H:i:s');
           
-          $query="INSERT INTO Users.quotehistory(Email,fullAddress,gallons,deliveryDate,suggestedPrice,totalAmount) 
-          VALUES($email,'$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          $query="INSERT INTO Users.quotehistory(OrderTime,Email,fullAddress,gallons,deliveryDate,suggestedPrice,totalAmount) 
+          VALUES('$time','$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
           if($mysqli->query($query)===TRUE)
           {}
           else{
