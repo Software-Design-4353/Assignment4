@@ -45,6 +45,7 @@
     <br>
     <table align = "center" border = "1px" style = "width:600px; line-height: 30px">
         <t>
+            <th> Index </th>
             <th> Delivery Date </th>
             <th> Gallon Request</th>
             <th> Address </th>
@@ -61,6 +62,7 @@
             {
         ?>
             <tr>
+                <td><?php echo $row['Index']; ?></td>
                 <td><?php echo $row['deliveryDate']; ?></td>
                 <td><?php echo $row['gallons']; ?></td>
                 <td><?php echo $row['fullAddress']; ?></td>
