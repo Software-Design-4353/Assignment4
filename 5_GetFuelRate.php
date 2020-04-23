@@ -220,6 +220,7 @@
         }else{
           echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
 
+          $email=$temp1;
           $fullAddress=$temp2;
           $gallons=$temp3;
           $deliveryDate=$temp4;
@@ -227,7 +228,7 @@
           $totalAmount=$temp6;
           
           $query="INSERT INTO Users.quotehistory(Email,fullAddress,gallons,deliveryDate,suggestedPrice,totalAmount) 
-          VALUES('$temp1','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          VALUES($email,'$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
           if($mysqli->query($query)===TRUE)
           {}
           else{
