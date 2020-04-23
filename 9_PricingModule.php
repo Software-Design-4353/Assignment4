@@ -32,12 +32,12 @@
       $fluctuation=0.03; //except summer(June 20 to September 22)
 
       //For Texas        
-      if($state='TX'){
+      if(strcmp($state,'TX')==0){
       $localFactor=0.02;
       }
 
       //For old clients
-      if($clientType=1){
+      if($clientType==1){
       $historyFactor=0.01;
       }
 
@@ -54,7 +54,7 @@
       $m = $array[1];
       $d = $array[2];
 
-      if(($m>6&&$m<9)||($m=6&&$d>19)||($m=9&&$d<23)){
+      if(($m>6&&$m<9)||($m==6&&$d>19)||($m==9&&$d<23)){
       $fluctuation=0.04;
       }
 
