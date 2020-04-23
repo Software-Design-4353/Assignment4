@@ -45,7 +45,7 @@
     <br>
     <table align = "center" border = "1px" style = "width:600px; line-height: 30px">
         <t>
-            <th> Index </th>
+            <th> Order Time </th>
             <th> Delivery Date </th>
             <th> Gallon Request</th>
             <th> Address </th>
@@ -55,14 +55,15 @@
         <?php
             //connection
             include '0_Connection.php';
-            $sql = "SELECT * FROM quotehistory WHERE Email='$email";
+            $email=$_SESSION["email"];
+            $sql = "SELECT * FROM quotehistory WHERE Email='$email'";
             $result = $mysqli->query($sql);
             
             while($row = mysqli_fetch_assoc($result))
             {
         ?>
             <tr>
-                <td><?php echo $row['Index']; ?></td>
+                <td><?php echo $row['OrderTime']; ?></td>
                 <td><?php echo $row['deliveryDate']; ?></td>
                 <td><?php echo $row['gallons']; ?></td>
                 <td><?php echo $row['fullAddress']; ?></td>
