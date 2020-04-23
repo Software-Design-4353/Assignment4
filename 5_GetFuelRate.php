@@ -112,7 +112,6 @@
         $temp4=$deliveryDate;
         $temp5=$suggestedPrice;
         $temp6=$totalAmount;
-        $temp7=$clientType;
 
         echo "<form action=\"9_PricingModule.php\" method=\"get\">";
 
@@ -221,7 +220,6 @@
         }else{
           echo "<input type=\"submit\" value=\"Submit Quote\"><br><br>";
 
-          $email=$temp1;
           $fullAddress=$temp2;
           $gallons=$temp3;
           $deliveryDate=$temp4;
@@ -229,11 +227,11 @@
           $totalAmount=$temp6;
           
           $query="INSERT INTO Users.quotehistory(Email,fullAddress,gallons,deliveryDate,suggestedPrice,totalAmount) 
-          VALUES('$email','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
+          VALUES('$temp1','$fullAddress','$gallons','$deliveryDate','$suggestedPrice','$totalAmount')";
           if($mysqli->query($query)===TRUE)
           {}
           else{
-            echo "Error";
+            echo "Error!!!";
           }
           
           $query="UPDATE Users.readyquote SET Mark = 0 WHERE Mark=1";//reset readyQuote table
@@ -243,7 +241,7 @@
             echo "Error";
           }
 
-          if($temp7==0){
+          if($clientType==0){
           $query="UPDATE Users.UserInfo SET clientType = 1 WHERE Email='$email'"; //change client type to old client (value = 1)
           if($mysqli->query($query)===TRUE)
           {}
