@@ -18,7 +18,8 @@ CREATE TABLE UserInfo (
 )
 
 CREATE TABLE QuoteHistory(
-	Email VARCHAR(50) PRIMARY KEY,
+    Index INT IDENTITY(1,1) PRIMARY KEY,
+	Email VARCHAR(50),
     fullAddress VARCHAR(100),
 	gallons INT,
 	deliveryDate DATE,
