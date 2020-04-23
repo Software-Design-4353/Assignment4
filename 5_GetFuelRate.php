@@ -112,6 +112,7 @@
         $temp4=$deliveryDate;
         $temp5=$suggestedPrice;
         $temp6=$totalAmount;
+        $temp7=$clientType;
 
         echo "<form action=\"9_PricingModule.php\" method=\"get\">";
 
@@ -242,11 +243,13 @@
             echo "Error";
           }
 
+          if($temp7==0){
           $query="UPDATE Users.UserInfo SET clientType = 1 WHERE Email='$email'"; //change client type to old client (value = 1)
           if($mysqli->query($query)===TRUE)
           {}
           else{
             echo "Error";
+          }
           }
 
         }
