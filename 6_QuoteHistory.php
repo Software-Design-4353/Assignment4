@@ -45,9 +45,8 @@
     <br>
     <table align = "center" border = "1px" style = "width:600px; line-height: 30px">
         <t>
-            <th> User Email</th>
-            <th> Gallon Request</th>
             <th> Delivery Date </th>
+            <th> Gallon Request</th>
             <th> Address </th>
             <th> Suggested Price  </th>
             <th> Total Amount</th>
@@ -62,9 +61,8 @@
             {
         ?>
             <tr>
-                <td><?php echo $row['Email']; ?></td>
-                <td><?php echo $row['gallons']; ?></td>
                 <td><?php echo $row['deliveryDate']; ?></td>
+                <td><?php echo $row['gallons']; ?></td>
                 <td><?php echo $row['fullAddress']; ?></td>
                 <td><?php echo $row['suggestedPrice']; ?></td>
                 <td><?php echo $row['totalAmount']; ?></td>
