@@ -5,32 +5,32 @@
 CREATE DATEBASE Users
 
 CREATE TABLE UserInfo (
-    Email VARCHAR(50) PRIMARY KEY,
-    Password VARCHAR(50),
-    fName VARCHAR(50),
-    lName VARCHAR(50),
-    address1 VARCHAR(100),
-    address2 VARCHAR(100),
-    city VARCHAR(50),
-    state VARCHAR(50),
-    zip varchar(5),
-    clientType INT(1),
-)
+	Email VARCHAR(50) PRIMARY KEY,
+	Password VARCHAR(50),
+	fName VARCHAR(50),
+	lName VARCHAR(50),
+	address1 VARCHAR(100),
+	address2 VARCHAR(100),
+	city VARCHAR(50),
+	state VARCHAR(50),
+	zip varchar(5),
+	clientType INT(1),
+);
 
 CREATE TABLE QuoteHistory(
-    Index INT IDENTITY(1,1) PRIMARY KEY,
+	OrderTime DATETIME PRIMARY KEY,
 	Email VARCHAR(50),
-    fullAddress VARCHAR(100),
+	fullAddress VARCHAR(100),
 	gallons INT,
 	deliveryDate DATE,
 	suggestedPrice DECIMAL(10,2),
 	totalAmount DECIMAL(10,2)
-)
+);
 
 CREATE TABLE ReadyQuote(
-    Mark INT PRIMARY KEY,
+	Mark INT PRIMARY KEY,
 	Email VARCHAR(50),
-    fullAddress VARCHAR(100),
+	fullAddress VARCHAR(100),
 	gallons INT,
 	deliveryDate DATE,
 	suggestedPrice DECIMAL(10,2),
