@@ -47,12 +47,16 @@
       }
 
       //For Summer
-      //$m=3;
-      //$d=8;
+      $tempDate = new DateTime($deliveryDate);
+      $result = $tempDate->format('Y-m-d');
 
-      //if(($m>6&&$m<9)||($m=6&&$d>19)||($m=9&&$d<23)){
-      //$fluctuation=0.04;
-      //}
+      $array = explode("-",$result);
+      $m = $array[1];
+      $d = $array[2];
+
+      if(($m>6&&$m<9)||($m=6&&$d>19)||($m=9&&$d<23)){
+      $fluctuation=0.04;
+      }
 
       //Current Price = 1.5, Company Profit Rate = 0.1
       $suggestedPrice=1.5+1.5*(0.1+$localFactor-$historyFactor+$gallonFactor+$fluctuation);
