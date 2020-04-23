@@ -54,7 +54,7 @@
         <?php
             //connection
             include '0_Connection.php';
-            $sql = "SELECT * FROM quotehistory";
+            $sql = "SELECT * FROM quotehistory WHERE Email='$email";
             $result = $mysqli->query($sql);
             
             while($row = mysqli_fetch_assoc($result))
